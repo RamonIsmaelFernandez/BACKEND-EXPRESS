@@ -17,25 +17,25 @@ class GamesController {
         if (games.length > 0) {
             return res.json(games[0]);
         }
-        res.status(404).json({ text: "The game doesn't exits" });
+        res.status(404).json({ text: "La teoria no exite!!!" });
     }
 
     public async create(req: Request, res: Response): Promise<void> {
         const result = await pool.query('INSERT INTO games set ?', [req.body]);
-        res.json({ message: 'Game Saved' });
+        res.json({ message: 'Teoria guardada!!!' });
     }
 
     public async update(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         const oldGame = req.body;
         await pool.query('UPDATE games set ? WHERE id = ?', [req.body, id]);
-        res.json({ message: "The game was Updated" });
+        res.json({ message: "La teoria ha sido actualizada!!!" });
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         await pool.query('DELETE FROM games WHERE id = ?', [id]);
-        res.json({ message: "The game was deleted" });
+        res.json({ message: "La teroia ha siso borrada!!!" });
     }
 }
 
