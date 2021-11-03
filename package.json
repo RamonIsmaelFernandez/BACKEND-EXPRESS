@@ -6,8 +6,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "dev": "nodemon ./build"
-    
+    "dev": "nodemon ./build",
+    "test":"echo \"Error: A \" && exit 1",
+    "start": "node index.js"
+
   },
   "keywords": [],
   "author": "",
