@@ -26,12 +26,12 @@ class Server {
 
     routes(): void {
         this.app.use('/', indexRoutes);
-        this.app.use('/api/games', gamesRoutes);
+        this.app.use('/api/teoria', gamesRoutes);
     }
 
     start() {
         this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port', this.app.get('port'));
+            console.log('Conectado al puerto: ', this.app.get('port'));
         });
     }
 
