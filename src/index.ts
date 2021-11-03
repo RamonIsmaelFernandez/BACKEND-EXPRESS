@@ -26,7 +26,7 @@ class Server {
 
     routes(): void {
         this.app.use('/', indexRoutes);
-        this.app.use('/api/teoria', gamesRoutes);
+        this.app.use('/api/games', gamesRoutes);
     }
 
     start() {
