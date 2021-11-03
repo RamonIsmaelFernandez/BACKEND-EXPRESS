@@ -28,13 +28,13 @@ class GamesController {
             if (games.length > 0) {
                 return res.json(games[0]);
             }
-            res.status(404).json({ text: "The game doesn't exits" });
+            res.status(404).json({ text: "La teoria no existe!!!!" });
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.query('INSERT INTO games set ?', [req.body]);
-            res.json({ message: 'Game Saved' });
+            res.json({ message: 'Teoria guardada!!!' });
         });
     }
     update(req, res) {
@@ -42,14 +42,14 @@ class GamesController {
             const { id } = req.params;
             const oldGame = req.body;
             yield database_1.default.query('UPDATE games set ? WHERE id = ?', [req.body, id]);
-            res.json({ message: "The game was Updated" });
+            res.json({ message: "La teoria ha sido actualizada!!!" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('DELETE FROM games WHERE id = ?', [id]);
-            res.json({ message: "The game was deleted" });
+            res.json({ message: "La teoria ha sido borrada!!!" });
         });
     }
 }
