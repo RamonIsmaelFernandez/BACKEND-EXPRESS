@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-
 class GamesController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -21,9 +20,6 @@ class GamesController {
             res.json(games);
         });
     }
-
-    //=============Seleccionar=================//
-
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
@@ -32,37 +28,28 @@ class GamesController {
             if (games.length > 0) {
                 return res.json(games[0]);
             }
-            res.status(404).json({ text: "Este juego no existe" });
+            res.status(404).json({ text: "The game doesn't exits" });
         });
     }
-
-    //=============Agregar=================//
-
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.query('INSERT INTO games set ?', [req.body]);
-            res.json({ message: 'Juego guardado' });
+            res.json({ message: 'Game Saved' });
         });
     }
-
-    //=============Actualizar=================//
-
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const oldGame = req.body;
             yield database_1.default.query('UPDATE games set ? WHERE id = ?', [req.body, id]);
-            res.json({ message: "El juego ha sido Actualizado" });
+            res.json({ message: "The game was Updated" });
         });
     }
-
-    //=============Borrar=================//
-    
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             yield database_1.default.query('DELETE FROM games WHERE id = ?', [id]);
-            res.json({ message: "El juego ha sido borrado" });
+            res.json({ message: "The game was deleted" });
         });
     }
 }
